@@ -40,3 +40,5 @@ build/                 # Directorios de compilación
 ### Variables de Entorno Sensibles ###
 secrets.json           # Archivos con credenciales
 *.key                  # Claves privadas
+# Environment
+.env
