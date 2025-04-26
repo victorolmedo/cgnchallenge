@@ -12,7 +12,8 @@ venv/                  # Entorno virtual estándar
 *.env                  # Archivos de variables de entorno (usar .env.example)
 
 ### IDE ###
-.idea/                 # Configuración de PyCharm/IntelliJ
+# IDE de JetBrains (PyCharm, IntelliJ, etc.)
+.idea/
 .vscode/               # Configuración de VSCode
 *.iml                  # Archivos de módulo de JetBrains
 
