@@ -1,0 +1,92 @@
+[
+  {
+    "model": "libros.autor",
+    "pk": 1,
+    "fields": {
+      "nombre": "Gabriel García Márquez",
+      "nacionalidad": "Colombiana",
+      "fecha_nacimiento": "1927-03-06"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 2,
+    "fields": {
+      "nombre": "Jorge Luis Borges",
+      "nacionalidad": "Argentina",
+      "fecha_nacimiento": "1899-08-24"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 3,
+    "fields": {
+      "nombre": "Julio Cortázar",
+      "nacionalidad": "Argentina",
+      "fecha_nacimiento": "1914-08-26"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 4,
+    "fields": {
+      "nombre": "Isabel Allende",
+      "nacionalidad": "Chilena",
+      "fecha_nacimiento": "1942-08-02"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 5,
+    "fields": {
+      "nombre": "Mario Vargas Llosa",
+      "nacionalidad": "Peruana",
+      "fecha_nacimiento": "1936-03-28"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 6,
+    "fields": {
+      "nombre": "Miguel de Cervantes",
+      "nacionalidad": "Española",
+      "fecha_nacimiento": "1547-09-29"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 7,
+    "fields": {
+      "nombre": "Jane Austen",
+      "nacionalidad": "Británica",
+      "fecha_nacimiento": "1775-12-16"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 8,
+    "fields": {
+      "nombre": "Leo Tolstoy",
+      "nacionalidad": "Rusa",
+      "fecha_nacimiento": "1828-09-09"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 9,
+    "fields": {
+      "nombre": "Haruki Murakami",
+      "nacionalidad": "Japonesa",
+      "fecha_nacimiento": "1949-01-12"
+    }
+  },
+  {
+    "model": "libros.autor",
+    "pk": 10,
+    "fields": {
+      "nombre": "J.K. Rowling",
+      "nacionalidad": "Británica",
+      "fecha_nacimiento": "1965-07-31"
+    }
+  }
+]

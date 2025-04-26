@@ -1,0 +1,102 @@
+[
+  {
+    "model": "libros.libro",
+    "pk": 1,
+    "fields": {
+      "titulo": "Cien años de soledad",
+      "fecha_publicacion": "1967-05-30",
+      "isbn": "9780307474728",
+      "autores": [1]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 2,
+    "fields": {
+      "titulo": "Ficciones",
+      "fecha_publicacion": "1944-01-01",
+      "isbn": "9788445071418",
+      "autores": [2]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 3,
+    "fields": {
+      "titulo": "Rayuela",
+      "fecha_publicacion": "1963-06-28",
+      "isbn": "9788437603587",
+      "autores": [3]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 4,
+    "fields": {
+      "titulo": "La casa de los espíritus",
+      "fecha_publicacion": "1982-01-01",
+      "isbn": "9780525433472",
+      "autores": [4]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 5,
+    "fields": {
+      "titulo": "La ciudad y los perros",
+      "fecha_publicacion": "1963-01-01",
+      "isbn": "9788432214191",
+      "autores": [5]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 6,
+    "fields": {
+      "titulo": "Don Quijote de la Mancha",
+      "fecha_publicacion": "1605-01-16",
+      "isbn": "9788491050296",
+      "autores": [6]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 7,
+    "fields": {
+      "titulo": "Orgullo y prejuicio",
+      "fecha_publicacion": "1813-01-28",
+      "isbn": "9780141439518",
+      "autores": [7]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 8,
+    "fields": {
+      "titulo": "Guerra y paz",
+      "fecha_publicacion": "1869-01-01",
+      "isbn": "9781853260629",
+      "autores": [8]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 9,
+    "fields": {
+      "titulo": "Tokio Blues (Norwegian Wood)",
+      "fecha_publicacion": "1987-09-04",
+      "isbn": "9788483830040",
+      "autores": [9]
+    }
+  },
+  {
+    "model": "libros.libro",
+    "pk": 10,
+    "fields": {
+      "titulo": "Harry Potter y la piedra filosofal",
+      "fecha_publicacion": "1997-06-26",
+      "isbn": "9788478884452",
+      "autores": [10]
+    }
+  }
+]

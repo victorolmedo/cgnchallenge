@@ -1,0 +1,37 @@
+### Django ###
+*.log                  # Archivos de registro
+*.pot                  # Archivos de traducción temporal
+*.pyc                  # Bytecode de Python
+__pycache__/           # Directorio de caché de Python
+local_settings.py      # Configuraciones locales (no subir)
+db.sqlite3             # Base de datos local de desarrollo
+
+### Entornos Virtuales ###
+venv/                  # Entorno virtual estándar
+.env/                  # Entorno virtual alternativo
+*.env                  # Archivos de variables de entorno (usar .env.example)
+
+### IDE ###
+.idea/                 # Configuración de PyCharm/IntelliJ
+.vscode/               # Configuración de VSCode
+*.iml                  # Archivos de módulo de JetBrains
+
+### Docker ###
+docker-compose.override.yml  # Configuraciones locales de Docker
+data/                  # Volúmenes de datos persistentes (si usas bind mounts)
+
+### Archivos del Sistema ###
+.DS_Store              # Metadatos de macOS
+Thumbs.db              # Metadatos de Windows
+
+### Frontend ###
+node_modules/          # Dependencias de Node.js
+staticfiles/           # Archivos estáticos recolectados (Django)
+
+### Archivos de Build ###
+dist/                  # Paquetes construidos
+build/                 # Directorios de compilación
+
+### Variables de Entorno Sensibles ###
+secrets.json           # Archivos con credenciales
+*.key                  # Claves privadas
