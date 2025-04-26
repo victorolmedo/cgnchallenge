@@ -6,6 +6,9 @@ class AutorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Autor
         fields = '__all__'
+        extra_kwargs = {
+            'fecha_nacimiento': {'required': False},
+        }
 
 
 class LibroSerializer(serializers.ModelSerializer):
@@ -18,8 +21,8 @@ class LibroSerializer(serializers.ModelSerializer):
         source='autores',
         many=True,
         write_only=True,
-        required = False,
-        allow_empty = True
+        required=False,
+        allow_empty=True
     )
 
     class Meta:

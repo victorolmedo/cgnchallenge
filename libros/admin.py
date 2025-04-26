@@ -16,6 +16,7 @@ class LibroResource(resources.ModelResource):
 
 @admin.register(Autor)
 class AutorAdmin(ImportExportModelAdmin):
+    fields = ['nombre', 'nacionalidad', 'fecha_nacimiento']
     # Habilita import/export
     resource_class = AutorResource
     list_display = ('nombre', 'nacionalidad', 'fecha_nacimiento')
