@@ -16,6 +16,10 @@ venv/                  # Entorno virtual estándar
 .vscode/               # Configuración de VSCode
 *.iml                  # Archivos de módulo de JetBrains
 
+# Bytecode de Python
+__pycache__/
+*.pyc
+
 ### Docker ###
 docker-compose.override.yml  # Configuraciones locales de Docker
 data/                  # Volúmenes de datos persistentes (si usas bind mounts)
