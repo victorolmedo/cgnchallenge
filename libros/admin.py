@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Count
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from libros.models import Autor, Libro
@@ -19,9 +20,14 @@ class AutorAdmin(ImportExportModelAdmin):
     fields = ['nombre', 'nacionalidad', 'fecha_nacimiento']
     # Habilita import/export
     resource_class = AutorResource
-    list_display = ('nombre', 'nacionalidad', 'fecha_nacimiento')
+    list_display = ('nombre', 'nacionalidad', 'total_libros')
     search_fields = ('nombre', 'nacionalidad')
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(total_libros=Count('libro'))
 
+    def total_libros(self, obj):
+        return obj.total_libros
+    total_libros.admin_order_field = 'total_libros'
 
 @admin.register(Libro)
 class LibroAdmin(ImportExportModelAdmin):

@@ -3,6 +3,9 @@ from libros.models import Autor, Libro
 
 
 class AutorSerializer(serializers.ModelSerializer):
+    #Campo calculado
+    total_libros = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Autor
         fields = '__all__'
