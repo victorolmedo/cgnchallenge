@@ -5,12 +5,23 @@ from libros.models import Autor, Libro
 class AutorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Autor
-        fields = ['id', 'nombre', 'nacionalidad', 'fecha_nacimiento']
+        fields = '__all__'
 
 
 class LibroSerializer(serializers.ModelSerializer):
+    # Detalle de autores
     autores = AutorSerializer(many=True, read_only=True)
+
+    # para las escritureas del POST PUT
+    autores_ids = serializers.PrimaryKeyRelatedField(
+        queryset=Autor.objects.all(),
+        source='autores',
+        many=True,
+        write_only=True,
+        required = False,
+        allow_empty = True
+    )
 
     class Meta:
         model = Libro
-        fields = ['id', 'titulo', 'fecha_publicacion', 'isbn', 'autores']
+        fields = '__all__'
