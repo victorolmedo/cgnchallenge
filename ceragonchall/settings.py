@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'api',
     'frontend',
     'rest_framework',
+    'import_export',
 ]
 
 MIDDLEWARE = [
