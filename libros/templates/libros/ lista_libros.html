@@ -1,0 +1,13 @@
+<!-- libros/templates/libros/lista_libros.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Lista de Libros</h1>
+    <ul>
+        {% for libro in libros %}
+            <li>{{ libro.titulo }} - {{ libro.autor.nombre }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

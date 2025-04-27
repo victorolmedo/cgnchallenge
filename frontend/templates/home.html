@@ -1,0 +1,148 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+{% block title %}Inicio - Biblioteca Digital{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Biblioteca Digital</h1>
+
+    <!-- Sección de Libros -->
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Libros</h2>
+            <div id="libros-list"></div>
+            <nav aria-label="Paginación de libros">
+                <ul id="libros-pagination" class="pagination"></ul>
+            </nav>
+        </div>
+
+        <!-- Sección de Autores -->
+        <div class="col-md-4">
+            <h2>Autores</h2>
+            <div id="autores-list"></div>
+            <nav aria-label="Paginación de autores">
+                <ul id="autores-pagination" class="pagination"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<style>
+    .book-card, .author-card {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .pagination {
+        margin-top: 20px;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const librosList = document.getElementById('libros-list');
+    const librosPagination = document.getElementById('libros-pagination');
+    const autoresList = document.getElementById('autores-list');
+    const autoresPagination = document.getElementById('autores-pagination');
+
+    // Configuración de la API
+    const apiConfig = {
+        libros: {
+            url: '/api/libros/',
+            currentPage: 1,
+            totalPages: 1
+        },
+        autores: {
+            url: '/api/autores/',
+            currentPage: 1,
+            totalPages: 1
+        }
+    };
+
+    // Función para cargar datos
+    async function cargarDatos(tipo) {
+        try {
+            const response = await fetch(`${apiConfig[tipo].url}?page=${apiConfig[tipo].currentPage}`);
+            const data = await response.json();
+
+            // Actualizar paginación
+            apiConfig[tipo].totalPages = data.total_pages;
+
+            // Renderizar datos
+            if(tipo === 'libros') {
+                renderLibros(data.results);
+                renderPagination('libros');
+            } else {
+                renderAutores(data.results);
+                renderPagination('autores');
+            }
+
+        } catch (error) {
+            console.error(`Error cargando ${tipo}:`, error);
+        }
+    }
+
+    // Renderizar libros
+    function renderLibros(libros) {
+        librosList.innerHTML = libros.map(libro => `
+            <div class="book-card">
+                <h4>${libro.titulo}</h4>
+                <p>Autor: ${libro.autores.map(autor => autor.nombre)}</p>
+                <p>Publicación: ${new Date(libro.fecha_publicacion).getFullYear()}</p>
+                <p>Género: ${libro.genero}</p>
+            </div>
+        `).join('');
+    }
+
+    // Renderizar autores
+    function renderAutores(autores) {
+        autoresList.innerHTML = autores.map(autor => `
+            <div class="author-card">
+                <h5>${autor.nombre}</h5>
+                <p>País: ${autor.nacionalidad}</p>
+                <p>Libros publicados: ${autor.total_libros}</p>
+            </div>
+        `).join('');
+    }
+
+    // Renderizar paginación
+    function renderPagination(tipo) {
+        const paginationContainer = tipo === 'libros' ? librosPagination : autoresPagination;
+        const config = apiConfig[tipo];
+
+        let html = '';
+
+        // Botón Anterior
+        html += `<li class="page-item ${config.currentPage === 1 ? 'disabled' : ''}">
+            <button class="page-link" onclick="cambiarPagina('${tipo}', ${config.currentPage - 1})">Anterior</button>
+        </li>`;
+
+        // Números de página
+        for(let i = 1; i <= config.totalPages; i++) {
+            html += `<li class="page-item ${i === config.currentPage ? 'active' : ''}">
+                <button class="page-link" onclick="cambiarPagina('${tipo}', ${i})">${i}</button>
+            </li>`;
+        }
+
+        // Botón Siguiente
+        html += `<li class="page-item ${config.currentPage === config.totalPages ? 'disabled' : ''}">
+            <button class="page-link" onclick="cambiarPagina('${tipo}', ${config.currentPage + 1})">Siguiente</button>
+        </li>`;
+
+        paginationContainer.innerHTML = html;
+    }
+
+    // Función para cambiar página
+    window.cambiarPagina = function(tipo, nuevaPagina) {
+        if(nuevaPagina < 1 || nuevaPagina > apiConfig[tipo].totalPages) return;
+        apiConfig[tipo].currentPage = nuevaPagina;
+        cargarDatos(tipo);
+    }
+
+    // Cargar datos iniciales
+    cargarDatos('libros');
+    cargarDatos('autores');
+});
+</script>
+{% endblock %}
