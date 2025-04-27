@@ -15,7 +15,8 @@ class StandardPagination(PageNumberPagination):
 
 
 class AutorViewSet(viewsets.ModelViewSet):
-    queryset = Autor.objects.annotate(total_libros=Count('libro'))  # Consulta base
+    # Consulta base
+    queryset = Autor.objects.annotate(total_libros=Count('libro'))
     serializer_class = AutorSerializer
     pagination_class = StandardPagination
 
