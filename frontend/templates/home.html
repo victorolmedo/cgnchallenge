@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h4>${libro.titulo}</h4>
                 <p>Autor: ${libro.autores.map(autor => autor.nombre)}</p>
                 <p>Publicación: ${new Date(libro.fecha_publicacion).getFullYear()}</p>
-                <p>Género: ${libro.genero}</p>
             </div>
         `).join('');
     }
