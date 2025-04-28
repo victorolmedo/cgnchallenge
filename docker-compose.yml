@@ -1,8 +1,34 @@
 services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: ceragon
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "
+        python manage.py migrate &&
+        python manage.py loaddata libros/fixtures/autores.json &&
+        python manage.py loaddata libros/fixtures/libros.json &&
+        gunicorn ceragonchall.wsgi:application --bind 0.0.0.0:8000
+      "
     volumes:
-      - .:/ceragonchall
+      - .:/api
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=default://postgres:12345@db:5432/ceragon
+      - DEBUG=1
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+
+volumes:
+  postgres_data:
